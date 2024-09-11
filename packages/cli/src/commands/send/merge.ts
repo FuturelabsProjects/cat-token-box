@@ -18,6 +18,16 @@ async function feeSplitTx(
   feeRate: number,
   count: number,
 ) {
+    return feeUtxos;
+}
+
+async function feeSplitTx1(
+  configService: ConfigService,
+  walletService: WalletService,
+  feeUtxos: UTXO[],
+  feeRate: number,
+  count: number,
+) {
   if (count === 1 && feeUtxos.length === 1) {
     return feeUtxos;
   }
