@@ -272,6 +272,7 @@ export class MintCommand extends BoardcastCommand {
     );
 
     feeUtxos = feeUtxos.filter((utxo) => {
+      return this.spendService.isUnspent(utxo);
       return this.spendService.isUnspent(utxo) && utxo.satoshis>80000;
     });
 
