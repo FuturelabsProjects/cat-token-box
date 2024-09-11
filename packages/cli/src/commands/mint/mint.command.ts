@@ -272,13 +272,13 @@ export class MintCommand extends BoardcastCommand {
     );
 
     feeUtxos = feeUtxos.filter((utxo) => {
-      return this.spendService.isUnspent(utxo);
+      return this.spendService.isUnspent(utxo) && utxo.satoshis>80000;
     });
 
     if (feeUtxos.length === 0) {
       console.warn('Insufficient satoshis balance!');
       return [];
     }
-    return feeUtxos;
+    return [feeUtxos[Math.floor(Math.random() * feeUtxos.length)]];
   }
 }
